@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: black;
+      }
+      body {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .card1,
+      .card2 {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 250px;
+        background-color: #222;
+        border-radius: 10px;
+      }
+      .card1::before {
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        border-radius: 10px;
+        content: "";
+        background-color: tomato;
+        z-index: -11;
+        transition: 0.2s;
+      }
+      .card1:hover::before {
+        width: 208px;
+        height: 258px;
+        animation: animation 2s linear infinite;
+      }
+      @keyframes animation {
+        50% {
+          filter: hue-rotate(350deg);
+          filter: drop-shadow(6px 6px 44px red) invert(65%);
+        }
+      }
+      .card2 {
+        overflow: hidden;
+      }
+      .card2:hover::before {
+        width: 80px;
+        height: 400px;
+        background-color: #24ff0c;
+        content: "";
+        transform: rotate(45deg);
+      }
+      .card2:hover::before{
+        animation: rotate  2s linear infinite ,colors 1s linear infinite;
+      }
+      @keyframes rotate{
+        0% {
+           transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(180deg);
+        }
+      }
+      @keyframes colors{
+        0% {
+            background-color: #24ff0c;
+        }
+        50% {
+            background-color: aqua;
+        }
+        40% {
+            background-color: red;
+        }
+      }
+      .card2::after{
+        inset: 3px;
+        content: "";
+        position: absolute;
+        background-color:#222;
+        border-radius: 10px;
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="card1"></div>
+    <div class="card2"></div>
+  </body>
+</html>
